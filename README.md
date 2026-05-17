@@ -1,16 +1,101 @@
-# React + Vite
+# RTOWALA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RTOWALA is a React + Vite web application for RTO-related vehicle and licence services. It provides pages for vehicle selling, vehicle purchasing, user registration, login, guest dashboard access, contact details, and information about the service.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Home page with RTOWALA service overview
+- Vehicle selling and purchasing pages
+- User registration and login flow
+- Guest dashboard route
+- About and contact pages
+- Responsive React frontend built with Vite
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- React Router DOM
+- React Hook Form
+- ESLint
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+Make sure these are installed on your system:
+
+- Node.js 20+
+- npm
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/AdityaJawle/rtowla-react.git
+cd rtowla-react
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Build & Run
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build the project for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Run linting:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
+rtowla/
++-- public/
++-- src/
+|   +-- assets/
+|   +-- components/
+|   |   +-- common/
+|   |   +-- guest/
+|   +-- context/
+|   +-- App.jsx
+|   +-- App.css
+|   +-- index.css
+|   +-- main.jsx
++-- index.html
++-- package.json
++-- vite.config.js
+```
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the local development server |
+| `npm run build` | Creates a production build in `dist/` |
+| `npm run preview` | Serves the production build locally |
+| `npm run lint` | Runs ESLint checks |
+
+## Notes
+
+This project is currently a frontend application. It does not require Java, Maven, or MySQL unless a backend service is added later.
