@@ -1,34 +1,40 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { LoginContext } from '../../context/LoginContext'
+import { DashboardLayout, StatCard } from '../dashboard'
+import { guestServices, requestHistory } from './mock-data/guestData'
 
 function GuestDashboard() {
   const { user } = useContext(LoginContext)
 
   return (
-    <main className="dashboard-page">
-      <section className="dashboard-header">
-        <div>
-          <p>Welcome</p>
-          <h1>{user?.name || 'Guest User'}</h1>
-        </div>
-        <span className="dashboard-badge">Guest Dashboard</span>
+    <DashboardLayout
+      title={user?.name || 'Guest User'}
+      subtitle="Welcome"
+      badge="Guest Dashboard"
+      actions={[
+        { to: '/guest-dashboard/service-request', label: 'Service Request', icon: 'fa-solid fa-file-circle-plus' },
+        { to: '/guest-dashboard/sell-vehicle', label: 'Sell Vehicle', icon: 'fa-solid fa-car' },
+        { to: '/guest-dashboard/purchase-vehicle', label: 'Purchase Vehicle', icon: 'fa-solid fa-handshake' },
+        { to: '/guest-dashboard/request-history', label: 'Request History', icon: 'fa-solid fa-clock-rotate-left' }
+      ]}
+    >
+      <section className="stat-grid">
+        <StatCard icon="fa-solid fa-file-lines" label="Total Requests" value={requestHistory.length} note="Mock account history" />
+        <StatCard icon="fa-solid fa-spinner" label="In Progress" value="1" note="Currently active" />
+        <StatCard icon="fa-solid fa-circle-check" label="Completed" value="1" note="Delivered services" />
       </section>
 
       <section className="service-options">
-        <Link to="/sell" className="service-card">
-          <i className="fa-solid fa-car"></i>
-          <h2>Vehicle Related Service</h2>
-          <p>Sell vehicle, purchase vehicle, ownership transfer, RC update, hypothecation and address change services.</p>
-        </Link>
-
-        <Link to="/contact" className="service-card">
-          <i className="fa-solid fa-id-card"></i>
-          <h2>Driving Licence Related Service</h2>
-          <p>Apply for licence help, renewal support, address update, duplicate licence and document guidance.</p>
-        </Link>
+        {guestServices.map((service) => (
+          <Link to="/guest-dashboard/service-request" className="service-card" key={service.title}>
+            <i className={service.icon}></i>
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+          </Link>
+        ))}
       </section>
-    </main>
+    </DashboardLayout>
   )
 }
 
